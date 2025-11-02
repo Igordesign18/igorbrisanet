@@ -1,0 +1,2713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brisanet | Internet Residencial e Planos Móveis</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+            height: 100vh;
+            position: fixed;
+            width: 100%;
+        }
+
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23000;stop-opacity:1"/><stop offset="100%" style="stop-color:%231a1a1a;stop-opacity:1"/></linearGradient></defs><rect fill="url(%23grad)" width="400" height="600"/><ellipse cx="200" cy="300" rx="150" ry="200" fill="%23ff6b00" opacity="0.1"/><circle cx="300" cy="150" r="80" fill="%23ff8533" opacity="0.15"/></svg>') center/cover;
+            z-index: -1;
+            filter: blur(100px);
+        }
+
+        /* ========== ÍCONES FLUTUANTES NO FUNDO INTEIRO ========== */
+        .floating-background-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-float-icon {
+            position: absolute;
+            opacity: 0.08;
+            filter: drop-shadow(0 0 15px rgba(255, 107, 0, 0.4));
+        }
+
+        .bg-float-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: #ff6b00;
+        }
+
+        /* Posicionamento e tamanhos variados */
+        .bg-float-icon:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            width: 80px;
+            height: 80px;
+            animation: bgFloat1 15s ease-in-out infinite;
+        }
+
+        .bg-float-icon:nth-child(2) {
+            top: 20%;
+            right: 8%;
+            width: 60px;
+            height: 60px;
+            animation: bgFloat2 18s ease-in-out infinite 2s;
+        }
+
+        .bg-float-icon:nth-child(3) {
+            top: 35%;
+            left: 15%;
+            width: 70px;
+            height: 70px;
+            animation: bgFloat3 20s ease-in-out infinite 4s;
+        }
+
+        .bg-float-icon:nth-child(4) {
+            top: 45%;
+            right: 12%;
+            width: 90px;
+            height: 90px;
+            animation: bgFloat4 17s ease-in-out infinite 1s;
+        }
+
+        .bg-float-icon:nth-child(5) {
+            top: 60%;
+            left: 8%;
+            width: 75px;
+            height: 75px;
+            animation: bgFloat1 22s ease-in-out infinite 3s;
+        }
+
+        .bg-float-icon:nth-child(6) {
+            top: 70%;
+            right: 18%;
+            width: 65px;
+            height: 65px;
+            animation: bgFloat2 16s ease-in-out infinite 5s;
+        }
+
+        .bg-float-icon:nth-child(7) {
+            top: 85%;
+            left: 20%;
+            width: 80px;
+            height: 80px;
+            animation: bgFloat3 19s ease-in-out infinite 2s;
+        }
+
+        .bg-float-icon:nth-child(8) {
+            top: 15%;
+            left: 45%;
+            width: 55px;
+            height: 55px;
+            animation: bgFloat4 21s ease-in-out infinite 6s;
+        }
+
+        .bg-float-icon:nth-child(9) {
+            top: 50%;
+            right: 35%;
+            width: 85px;
+            height: 85px;
+            animation: bgFloat1 23s ease-in-out infinite 4s;
+        }
+
+        .bg-float-icon:nth-child(10) {
+            top: 75%;
+            left: 50%;
+            width: 70px;
+            height: 70px;
+            animation: bgFloat2 18s ease-in-out infinite 7s;
+        }
+
+        .bg-float-icon:nth-child(11) {
+            top: 25%;
+            right: 25%;
+            width: 60px;
+            height: 60px;
+            animation: bgFloat3 20s ease-in-out infinite 3s;
+        }
+
+        .bg-float-icon:nth-child(12) {
+            top: 90%;
+            right: 5%;
+            width: 75px;
+            height: 75px;
+            animation: bgFloat4 17s ease-in-out infinite 5s;
+        }
+
+        @keyframes bgFloat1 {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.08;
+            }
+            25% {
+                opacity: 0.15;
+            }
+            50% { 
+                transform: translate(-30px, -40px) rotate(180deg);
+                opacity: 0.12;
+            }
+            75% {
+                opacity: 0.1;
+            }
+        }
+
+        @keyframes bgFloat2 {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.08;
+            }
+            25% {
+                opacity: 0.14;
+            }
+            50% { 
+                transform: translate(40px, -35px) rotate(-180deg);
+                opacity: 0.11;
+            }
+            75% {
+                opacity: 0.09;
+            }
+        }
+
+        @keyframes bgFloat3 {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg) scale(1);
+                opacity: 0.08;
+            }
+            25% {
+                opacity: 0.13;
+            }
+            50% { 
+                transform: translate(-25px, 45px) rotate(90deg) scale(1.2);
+                opacity: 0.1;
+            }
+            75% {
+                opacity: 0.11;
+            }
+        }
+
+        @keyframes bgFloat4 {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg) scale(1);
+                opacity: 0.08;
+            }
+            25% {
+                opacity: 0.12;
+            }
+            50% { 
+                transform: translate(35px, 30px) rotate(-90deg) scale(0.9);
+                opacity: 0.14;
+            }
+            75% {
+                opacity: 0.09;
+            }
+        }
+
+        header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        }
+
+        .logo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #ff6b00;
+        }
+
+        .hero {
+            padding: 100px 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .plans-section {
+            padding: 80px 50px;
+            position: relative;
+        }
+
+        /* ========== ÍCONES FLUTUANTES OTIMIZADOS ========== */
+        .floating-icons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .floating-icons.left {
+            left: 20px;
+        }
+
+        .floating-icons.right {
+            right: 20px;
+        }
+
+        .floating-icon {
+            width: 70px;
+            height: 70px;
+            opacity: 0.25;
+            filter: drop-shadow(0 0 20px rgba(255, 107, 0, 0.6));
+            transition: all 0.3s ease;
+        }
+
+        .floating-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: #ff6b00;
+        }
+
+        .floating-icon:nth-child(1) {
+            animation: float1 5s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(2) {
+            animation: float2 6s ease-in-out infinite 0.5s;
+        }
+
+        .floating-icon:nth-child(3) {
+            animation: float3 7s ease-in-out infinite 1s;
+        }
+
+        .floating-icon:nth-child(4) {
+            animation: float4 8s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes float1 {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.25;
+            }
+            25% {
+                opacity: 0.35;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(8deg) scale(1.1);
+                opacity: 0.4;
+            }
+            75% {
+                opacity: 0.35;
+            }
+        }
+
+        @keyframes float2 {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.25;
+            }
+            25% {
+                opacity: 0.4;
+            }
+            50% { 
+                transform: translateY(-35px) rotate(-10deg) scale(1.15);
+                opacity: 0.45;
+            }
+            75% {
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes float3 {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.25;
+            }
+            25% {
+                opacity: 0.35;
+            }
+            50% { 
+                transform: translateY(-25px) rotate(12deg) scale(1.08);
+                opacity: 0.38;
+            }
+            75% {
+                opacity: 0.32;
+            }
+        }
+
+        @keyframes float4 {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.25;
+            }
+            25% {
+                opacity: 0.42;
+            }
+            50% { 
+                transform: translateY(-40px) rotate(-8deg) scale(1.12);
+                opacity: 0.48;
+            }
+            75% {
+                opacity: 0.33;
+            }
+        }
+
+        .consultant-carousel {
+            position: relative;
+            max-width: 340px;
+            margin: 0 auto 50px auto;
+            overflow: hidden;
+        }
+
+        .consultant-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .consultant-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .consultant-slide.image-only {
+            padding: 0;
+        }
+
+        .consultant-slide.image-only img {
+            width: 100%;
+            height: auto;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(255, 107, 0, 0.25);
+            border: 2px solid rgba(255, 107, 0, 0.25);
+            transition: all 0.4s;
+        }
+
+        .consultant-slide.image-only img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255, 107, 0, 0.35);
+            border-color: rgba(255, 107, 0, 0.5);
+        }
+
+        .consultant-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.05), rgba(0, 0, 0, 0.6));
+            padding: 35px 50px 30px 50px;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 107, 0, 0.25);
+            width: 100%;
+            box-shadow: 0 15px 50px rgba(255, 107, 0, 0.25);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .consultant-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255, 107, 0, 0.35);
+            border-color: rgba(255, 107, 0, 0.5);
+        }
+
+        .consultant-image-container {
+            width: 110px;
+            height: 110px;
+            position: relative;
+        }
+
+        .consultant-image-container::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b00, #ff8533, #ff6b00);
+            animation: rotate 3s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .consultant-image {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 4px solid #000;
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .consultant-info {
+            text-align: center;
+            padding: 0;
+        }
+
+        .consultant-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 10px rgba(255, 107, 0, 0.3);
+        }
+
+        .consultant-label {
+            font-size: 12px;
+            color: #ff6b00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .consultant-nav {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .consultant-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 107, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .consultant-dot.active {
+            background: #ff6b00;
+            transform: scale(1.2);
+            border-color: rgba(255, 107, 0, 0.5);
+        }
+
+        .consultant-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.8), rgba(255, 133, 51, 0.8));
+            color: #fff;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .consultant-arrow:hover {
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .consultant-arrow.prev {
+            left: -15px;
+        }
+
+        .consultant-arrow.next {
+            right: -15px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #ff6b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            padding: 18px 45px;
+            font-size: 18px;
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #fff, #ff6b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 40px 0;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 30px;
+        }
+
+        .plan-card {
+            min-width: 350px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.9));
+            border: 2px solid rgba(255, 107, 0, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s;
+        }
+
+        .plan-card:hover {
+            transform: scale(1.05) translateY(-10px);
+            border-color: #ff6b00;
+            box-shadow: 0 20px 60px rgba(255, 107, 0, 0.4);
+        }
+
+        .plan-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .plan-name {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #ff6b00;
+        }
+
+        .plan-speed {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .plan-price {
+            font-size: 36px;
+            color: #ff6b00;
+            margin: 20px 0;
+        }
+
+        .plan-price span {
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: #ff6b00;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            color: #fff;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .carousel-button:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-button.prev {
+            left: 10px;
+        }
+
+        .carousel-button.next {
+            right: 10px;
+        }
+
+        .features {
+            padding: 80px 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.9));
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255, 107, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #ff6b00;
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid rgba(255, 107, 0, 0.2);
+        }
+
+        .location-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .location-popup.hidden {
+            display: none;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(0, 0, 0, 0.98));
+            border: 2px solid rgba(255, 107, 0, 0.4);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 80px rgba(255, 107, 0, 0.5);
+            position: relative;
+        }
+
+        .popup-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 8px 18px;
+            border-radius: 20px;
+            background: rgba(255, 107, 0, 0.2);
+            border: 2px solid rgba(255, 107, 0, 0.4);
+            color: #ff6b00;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .popup-close-btn:hover {
+            background: rgba(255, 107, 0, 0.4);
+            border-color: #ff6b00;
+            transform: translateY(-2px);
+        }
+
+        .popup-content h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, #ff6b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .popup-content p {
+            color: #ccc;
+            margin-bottom: 35px;
+            font-size: 16px;
+        }
+
+        .location-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .location-icon svg {
+            width: 60px;
+            height: 60px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ff6b00;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 107, 0, 0.3);
+            border-radius: 15px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .form-select:hover {
+            border-color: #ff6b00;
+        }
+
+        .form-select:focus {
+            border-color: #ff6b00;
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+        }
+
+        .form-select option {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .popup-button {
+            width: 100%;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.4);
+            margin-top: 10px;
+        }
+
+        .popup-button:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6);
+        }
+
+        .popup-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .selected-location {
+            position: fixed;
+            top: 90px;
+            right: 20px;
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.2), rgba(0, 0, 0, 0.8));
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 107, 0, 0.3);
+            color: #fff;
+            font-size: 14px;
+            z-index: 99;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: none;
+        }
+
+        .selected-location:hover {
+            border-color: #ff6b00;
+            transform: translateY(-2px);
+        }
+
+        .selected-location.show {
+            display: block;
+        }
+
+        /* ========== CHAT FLUTUANTE ========== */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(255, 107, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(255, 107, 0, 0.7);
+        }
+
+        .chat-button svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        .chat-button.active svg.message-icon {
+            display: none;
+        }
+
+        .chat-button svg.close-icon {
+            display: none;
+        }
+
+        .chat-button.active svg.close-icon {
+            display: block;
+        }
+
+        .chat-notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            background: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            border: 2px solid #000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 95px;
+            right: 20px;
+            width: 400px;
+            max-width: calc(100vw - 40px);
+            height: 600px;
+            max-height: calc(100vh - 140px);
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98), rgba(0, 0, 0, 0.98));
+            border: 2px solid rgba(255, 107, 0, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 20px 80px rgba(255, 107, 0, 0.6);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.3s ease;
+        }
+
+        .chat-window.open {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid rgba(255, 107, 0, 0.3);
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .chat-close-btn {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .chat-close-btn:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .chat-close-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        .chat-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .chat-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .chat-header-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .chat-header-info h3 {
+            font-size: 16px;
+            margin-bottom: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chat-header-info p {
+            font-size: 12px;
+            opacity: 0.9;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chat-status {
+            width: 8px;
+            height: 8px;
+            background: #00ff00;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-height: 0;
+        }
+
+        .chat-body::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .chat-body::-webkit-scrollbar-track {
+            background: rgba(255, 107, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .chat-body::-webkit-scrollbar-thumb {
+            background: rgba(255, 107, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 8px;
+            animation: fadeIn 0.3s ease;
+            align-items: flex-start;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-message.bot {
+            flex-direction: row;
+        }
+
+        .chat-message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 2px solid rgba(255, 107, 0, 0.3);
+        }
+
+        .message-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .message-content {
+            max-width: 75%;
+            padding: 10px 14px;
+            border-radius: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .chat-message.bot .message-content {
+            background: rgba(255, 107, 0, 0.15);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+        }
+
+        .chat-message.user .message-content {
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            color: #fff;
+        }
+
+        .chat-quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0;
+            padding: 0 15px;
+        }
+
+        .quick-action-btn {
+            flex: 1;
+            min-width: calc(33.333% - 6px);
+            padding: 12px 16px;
+            background: rgba(255, 107, 0, 0.15);
+            border: 2px solid rgba(255, 107, 0, 0.4);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .quick-action-btn:hover {
+            background: rgba(255, 107, 0, 0.3);
+            border-color: #ff6b00;
+            transform: translateY(-2px);
+        }
+
+        .quick-action-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #ff6b00;
+        }
+
+        .chat-input-area {
+            padding: 12px 15px;
+            border-top: 2px solid rgba(255, 107, 0, 0.2);
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px 16px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 107, 0, 0.3);
+            border-radius: 22px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+            min-width: 0;
+        }
+
+        .chat-input:focus {
+            border-color: #ff6b00;
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
+        }
+
+        .chat-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .chat-send-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .chat-send-btn:hover:not(:disabled) {
+            transform: scale(1.1);
+        }
+
+        .chat-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .chat-send-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 10px 14px;
+            background: rgba(255, 107, 0, 0.15);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            border-radius: 16px;
+            width: fit-content;
+        }
+
+        .typing-dot {
+            width: 7px;
+            height: 7px;
+            background: #ff6b00;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-8px); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 0;
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .consultant-carousel {
+                max-width: 280px;
+            }
+
+            .consultant-badge {
+                padding: 30px 35px 25px 35px;
+                gap: 15px;
+            }
+
+            .consultant-image-container {
+                width: 90px;
+                height: 90px;
+            }
+
+            .consultant-image {
+                width: 90px;
+                height: 90px;
+                border: 3px solid #000;
+            }
+
+            .consultant-name {
+                font-size: 22px;
+            }
+
+            .consultant-label {
+                font-size: 11px;
+            }
+
+            .consultant-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+
+            .consultant-arrow.prev {
+                left: -10px;
+            }
+
+            .consultant-arrow.next {
+                right: -10px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .plans-section {
+                padding: 60px 20px;
+            }
+
+            .carousel-container {
+                padding: 20px 0;
+            }
+
+            .floating-icons {
+                display: none;
+            }
+
+            .plan-card {
+                min-width: 280px;
+                padding: 30px 25px;
+            }
+
+            .plan-name {
+                font-size: 24px;
+            }
+
+            .plan-speed {
+                font-size: 36px;
+            }
+
+            .plan-price {
+                font-size: 28px;
+            }
+
+            .carousel-button {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .carousel-button.prev {
+                left: 5px;
+            }
+
+            .carousel-button.next {
+                right: 5px;
+            }
+
+            .features {
+                padding: 60px 20px;
+                gap: 30px;
+            }
+
+            .feature-card {
+                padding: 30px 25px;
+            }
+
+            .popup-content {
+                padding: 40px 30px;
+            }
+
+            .popup-content h2 {
+                font-size: 26px;
+            }
+
+            .selected-location {
+                top: 120px;
+                font-size: 12px;
+                padding: 10px 15px;
+            }
+
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 16px;
+            }
+
+            .chat-widget {
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .chat-button {
+                width: 56px;
+                height: 56px;
+            }
+
+            .chat-button svg {
+                width: 26px;
+                height: 26px;
+            }
+
+            .chat-window {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                width: 100%;
+                max-width: 100%;
+                height: 70vh;
+                max-height: 70vh;
+                border-radius: 20px 20px 0 0;
+                border: none;
+                border-top: 2px solid rgba(255, 107, 0, 0.4);
+            }
+
+            .chat-close-btn {
+                display: flex !important;
+            }
+
+            .chat-header {
+                padding: 15px 55px 15px 15px;
+            }
+
+            .chat-avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .chat-header-info h3 {
+                font-size: 15px;
+            }
+
+            .chat-body {
+                padding: 12px;
+                gap: 10px;
+            }
+
+            .message-avatar {
+                width: 30px;
+                height: 30px;
+                font-size: 15px;
+            }
+
+            .message-content {
+                max-width: 80%;
+                font-size: 14px;
+                padding: 9px 12px;
+            }
+
+            .chat-input-area {
+                padding: 10px 12px;
+            }
+
+            .chat-input {
+                font-size: 14px;
+                padding: 9px 14px;
+            }
+
+            .chat-send-btn {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 35px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .consultant-carousel {
+                max-width: 240px;
+            }
+
+            .consultant-badge {
+                padding: 25px 30px 20px 30px;
+                gap: 12px;
+            }
+
+            .consultant-image-container {
+                width: 80px;
+                height: 80px;
+            }
+
+            .consultant-image {
+                width: 80px;
+                height: 80px;
+            }
+
+            .consultant-name {
+                font-size: 20px;
+            }
+
+            .consultant-label {
+                font-size: 10px;
+            }
+
+            .consultant-arrow {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 26px;
+                margin-bottom: 40px;
+            }
+
+            .plans-section {
+                padding: 50px 15px;
+            }
+
+            .plan-card {
+                min-width: 260px;
+                padding: 25px 20px;
+            }
+
+            .plan-icon svg {
+                width: 50px;
+                height: 50px;
+            }
+
+            .plan-name {
+                font-size: 22px;
+            }
+
+            .plan-speed {
+                font-size: 32px;
+            }
+
+            .plan-price {
+                font-size: 26px;
+            }
+
+            .plan-features li {
+                font-size: 14px;
+                padding: 8px 0;
+            }
+
+            .carousel-button {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+
+            .features {
+                padding: 50px 15px;
+                gap: 25px;
+            }
+
+            .feature-card {
+                padding: 25px 20px;
+            }
+
+            .feature-card h3 {
+                font-size: 18px;
+            }
+
+            .feature-card p {
+                font-size: 14px;
+            }
+
+            .feature-icon svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            .popup-content {
+                padding: 30px 20px;
+                max-width: 90%;
+            }
+
+            .popup-content h2 {
+                font-size: 22px;
+            }
+
+            .popup-content p {
+                font-size: 14px;
+            }
+
+            .form-select {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+
+            .popup-button {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+
+            .selected-location {
+                top: 110px;
+                right: 10px;
+                font-size: 11px;
+                padding: 8px 12px;
+            }
+
+            .cta-button {
+                padding: 14px 30px;
+                font-size: 15px;
+            }
+
+            footer {
+                padding: 30px 20px;
+                font-size: 14px;
+            }
+
+            footer p {
+                font-size: 13px;
+            }
+
+            .chat-button {
+                width: 52px;
+                height: 52px;
+            }
+
+            .chat-button svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .chat-notification {
+                width: 18px;
+                height: 18px;
+                font-size: 10px;
+            }
+
+            .chat-window {
+                height: 65vh;
+                max-height: 65vh;
+            }
+
+            .chat-close-btn {
+                width: 30px;
+                height: 30px;
+                right: 12px;
+            }
+
+            .chat-close-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .chat-header {
+                padding: 12px 50px 12px 12px;
+            }
+
+            .chat-avatar {
+                width: 38px;
+                height: 38px;
+                font-size: 18px;
+            }
+
+            .chat-header-info h3 {
+                font-size: 14px;
+            }
+
+            .chat-header-info p {
+                font-size: 11px;
+            }
+
+            .chat-body {
+                padding: 10px;
+            }
+
+            .message-content {
+                font-size: 13px;
+                padding: 8px 11px;
+            }
+
+            .chat-input {
+                font-size: 13px;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .consultant-carousel {
+                max-width: 320px;
+            }
+
+            .plan-card {
+                min-width: 320px;
+            }
+
+            .plans-section {
+                padding: 70px 40px;
+            }
+
+            .features {
+                padding: 70px 40px;
+            }
+
+            .floating-icons.left {
+                left: 10px;
+            }
+
+            .floating-icons.right {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-image"></div>
+    
+    <!-- Ícones flutuantes no fundo inteiro -->
+    <div class="floating-background-icons">
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 18C10.3431 18 9 16.6569 9 15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15C15 16.6569 13.6569 18 12 18Z"/>
+                <path d="M12 9C8.68629 9 6 11.6863 6 15H8C8 12.7909 9.79086 11 12 11C14.2091 11 16 12.7909 16 15H18C18 11.6863 15.3137 9 12 9Z"/>
+                <path d="M12 6C7.02944 6 3 10.0294 3 15H5C5 11.134 8.13401 8 12 8C15.866 8 19 11.134 19 15H21C21 10.0294 16.9706 6 12 6Z"/>
+            </svg>
+        </div>
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="2" width="14" height="20" rx="2" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                <line x1="5" y1="18" x2="19" y2="18" stroke="#ff6b00" stroke-width="2"/>
+                <circle cx="12" cy="20" r="0.5" fill="#ff6b00"/>
+            </svg>
+        </div>
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ff6b00"/>
+            </svg>
+        </div>
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                <circle cx="12" cy="12" r="3" fill="#ff6b00"/>
+            </svg>
+        </div>
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 18C10.3431 18 9 16.6569 9 15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15C15 16.6569 13.6569 18 12 18Z"/>
+                <path d="M12 9C8.68629 9 6 11.6863 6 15H8C8 12.7909 9.79086 11 12 11C14.2091 11 16 12.7909 16 15H18C18 11.6863 15.3137 9 12 9Z"/>
+            </svg>
+        </div>
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="2" width="14" height="20" rx="2" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                <line x1="5" y1="18" x2="19" y2="18" stroke="#ff6b00" stroke-width="2"/>
+            </svg>
+        </div>
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ff6b00"/>
+            </svg>
+        </div>
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="3" fill="#ff6b00"/>
+                <path d="M12 1v6M12 17v6M23 12h-6M7 12H1" stroke="#ff6b00" stroke-width="2"/>
+            </svg>
+        </div>
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                <circle cx="12" cy="12" r="3" fill="#ff6b00"/>
+            </svg>
+        </div>
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 18C10.3431 18 9 16.6569 9 15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15C15 16.6569 13.6569 18 12 18Z"/>
+                <path d="M12 9C8.68629 9 6 11.6863 6 15H8C8 12.7909 9.79086 11 12 11C14.2091 11 16 12.7909 16 15H18C18 11.6863 15.3137 9 12 9Z"/>
+                <path d="M12 6C7.02944 6 3 10.0294 3 15H5C5 11.134 8.13401 8 12 8C15.866 8 19 11.134 19 15H21C21 10.0294 16.9706 6 12 6Z"/>
+            </svg>
+        </div>
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="2" width="14" height="20" rx="2" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                <line x1="5" y1="18" x2="19" y2="18" stroke="#ff6b00" stroke-width="2"/>
+                <circle cx="12" cy="20" r="0.5" fill="#ff6b00"/>
+            </svg>
+        </div>
+        <div class="bg-float-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ff6b00"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="location-popup" id="locationPopup">
+        <div class="popup-content">
+            <button class="popup-close-btn" id="popupCloseBtn" title="Fechar">Fechar</button>
+            <div class="location-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" stroke="#ff6b00" stroke-width="2" fill="#ff6b00" fill-opacity="0.2"/>
+                    <circle cx="12" cy="9" r="2.5" fill="#ff6b00"/>
+                </svg>
+            </div>
+            <h2>Bem-vindo!</h2>
+            <p>Selecione seu estado e cidade para ver os planos disponíveis na sua região</p>
+            
+            <div class="form-group">
+                <label for="stateSelect">Estado</label>
+                <select id="stateSelect" class="form-select">
+                    <option value="">Selecione seu estado</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="citySelect">Cidade</label>
+                <select id="citySelect" class="form-select" disabled>
+                    <option value="">Primeiro selecione o estado</option>
+                </select>
+            </div>
+
+            <button class="popup-button" id="confirmButton" disabled>
+                Confirmar Localização
+            </button>
+        </div>
+    </div>
+
+    <div class="selected-location" id="selectedLocation">
+        <span id="locationText">📍 Alterar localização</span>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-button" id="chatButton" onclick="toggleChat()">
+            <svg class="message-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+            </svg>
+            <svg class="close-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+            <span class="chat-notification" id="chatNotification">1</span>
+        </button>
+
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-avatar">
+                    <img src="https://i.ibb.co/zTr83NPg/Gemini-Generated-Image-3wz7dq3wz7dq3wz7.png" alt="Igor Borges">
+                </div>
+                <div class="chat-header-info">
+                    <h3>Igor Borges</h3>
+                    <p><span class="chat-status"></span>Online agora</p>
+                </div>
+                <button class="chat-close-btn" onclick="toggleChat()" aria-label="Fechar chat">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="chat-body" id="chatBody">
+                <div class="chat-message bot">
+                    <div class="message-avatar">
+                        <img src="https://i.ibb.co/zTr83NPg/Gemini-Generated-Image-3wz7dq3wz7dq3wz7.png" alt="Igor Borges">
+                    </div>
+                    <div class="message-content">
+                        Olá! 👋 Sou Igor Borges, consultor brisanet! Como posso te ajudar hoje?
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-quick-actions">
+                <button class="quick-action-btn" onclick="sendQuickAction('Contratar')">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                    </svg>
+                    Contratar
+                </button>
+                <button class="quick-action-btn" onclick="sendQuickAction('Dúvidas')">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                    </svg>
+                    Dúvidas
+                </button>
+                <button class="quick-action-btn" onclick="sendQuickAction('Suporte')">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
+                    </svg>
+                    Suporte
+                </button>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)">
+                <button class="chat-send-btn" id="sendButton" onclick="sendMessage()">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Brisanet_logo.svg" alt="Brisanet">
+        </div>
+        <nav>
+            <a href="#home">Início</a>
+            <a href="#planos">Planos</a>
+            <a href="#beneficios">Benefícios</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="consultant-carousel">
+            <button class="consultant-arrow prev" onclick="moveConsultantCarousel(-1)">‹</button>
+            <div class="consultant-slides" id="consultantSlides">
+                <div class="consultant-slide">
+                    <div class="consultant-badge">
+                        <div class="consultant-image-container">
+                            <img src="https://i.ibb.co/zTr83NPg/Gemini-Generated-Image-3wz7dq3wz7dq3wz7.png" alt="Igor Borges" class="consultant-image">
+                        </div>
+                        <div class="consultant-info">
+                            <h3 class="consultant-name">Igor Borges</h3>
+                            <p class="consultant-label">Consultor Brisanet</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="consultant-slide image-only">
+                    <img src="https://i.ibb.co/67Kv6JhJ/Whats-App-Image-2025-10-07-at-19-22-20.jpg" alt="Banner 2">
+                </div>
+                <div class="consultant-slide image-only">
+                    <img src="https://i.ibb.co/1tn45JVz/Whats-App-Image-2025-10-07-at-19-22-21-1.jpg" alt="Banner 3">
+                </div>
+                <div class="consultant-slide image-only">
+                    <img src="https://i.ibb.co/rG0TdGk1/Whats-App-Image-2025-10-07-at-19-22-21.jpg" alt="Banner 4">
+                </div>
+            </div>
+            <button class="consultant-arrow next" onclick="moveConsultantCarousel(1)">›</button>
+            <div class="consultant-nav" id="consultantNav"></div>
+        </div>
+        <h1>Conectividade Sem Limites</h1>
+        <p>Internet ultra-rápida para sua casa e planos móveis com 5G</p>
+        <button class="cta-button" onclick="document.getElementById('planos').scrollIntoView({behavior: 'smooth'})">
+            Ver Planos
+        </button>
+    </section>
+
+    <section class="plans-section" id="planos">
+        <h2 class="section-title">Internet Fibra + BrisaChip</h2>
+        <p style="text-align: center; color: #ccc; margin-bottom: 40px; font-size: 18px;">Combine internet ultra-rápida com seu plano móvel!</p>
+        <div class="carousel-container">
+            <!-- Ícones flutuantes à esquerda -->
+            <div class="floating-icons left">
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 18C10.3431 18 9 16.6569 9 15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15C15 16.6569 13.6569 18 12 18Z"/>
+                        <path d="M12 9C8.68629 9 6 11.6863 6 15H8C8 12.7909 9.79086 11 12 11C14.2091 11 16 12.7909 16 15H18C18 11.6863 15.3137 9 12 9Z"/>
+                        <path d="M12 6C7.02944 6 3 10.0294 3 15H5C5 11.134 8.13401 8 12 8C15.866 8 19 11.134 19 15H21C21 10.0294 16.9706 6 12 6Z"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="2" width="14" height="20" rx="2" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                        <line x1="5" y1="18" x2="19" y2="18" stroke="#ff6b00" stroke-width="2"/>
+                        <circle cx="12" cy="20" r="0.5" fill="#ff6b00"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                        <circle cx="12" cy="12" r="3" fill="#ff6b00"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ff6b00"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Ícones flutuantes à direita -->
+            <div class="floating-icons right">
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="2" width="14" height="20" rx="2" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                        <line x1="5" y1="18" x2="19" y2="18" stroke="#ff6b00" stroke-width="2"/>
+                        <circle cx="12" cy="20" r="0.5" fill="#ff6b00"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 18C10.3431 18 9 16.6569 9 15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15C15 16.6569 13.6569 18 12 18Z"/>
+                        <path d="M12 9C8.68629 9 6 11.6863 6 15H8C8 12.7909 9.79086 11 12 11C14.2091 11 16 12.7909 16 15H18C18 11.6863 15.3137 9 12 9Z"/>
+                        <path d="M12 6C7.02944 6 3 10.0294 3 15H5C5 11.134 8.13401 8 12 8C15.866 8 19 11.134 19 15H21C21 10.0294 16.9706 6 12 6Z"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ff6b00"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                        <circle cx="12" cy="12" r="3" fill="#ff6b00"/>
+                    </svg>
+                </div>
+            </div>
+
+            <button class="carousel-button prev" onclick="moveCarousel('combo', -1)">‹</button>
+            <div class="carousel" id="carousel-combo">
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 18C10.3431 18 9 16.6569 9 15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15C15 16.6569 13.6569 18 12 18Z" fill="#ff6b00"/>
+                            <path d="M12 9C8.68629 9 6 11.6863 6 15H8C8 12.7909 9.79086 11 12 11C14.2091 11 16 12.7909 16 15H18C18 11.6863 15.3137 9 12 9Z" fill="#ff6b00"/>
+                            <path d="M12 6C7.02944 6 3 10.0294 3 15H5C5 11.134 8.13401 8 12 8C15.866 8 19 11.134 19 15H21C21 10.0294 16.9706 6 12 6Z" fill="#ff6b00"/>
+                        </svg>
+                    </div>
+                    <h3 class="plan-name">Combo Essencial</h3>
+                    <div class="plan-speed">500MB + 20GB</div>
+                    <div class="plan-price">R$ 84,90<span>/mês</span></div>
+                    <ul class="plan-features">
+                        <li>Internet Fibra 500MB</li>
+                        <li>20GB no celular</li>
+                        <li>Ligações ilimitadas</li>
+                        <li>Apps ilimitados</li>
+                        <li>Instalação grátis</li>
+                    </ul>
+                    <a href="https://brisanet.igorbrisanet.shop/webhook/contratar" target="_blank" class="cta-button">Assinar Agora</a>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 18C10.3431 18 9 16.6569 9 15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15C15 16.6569 13.6569 18 12 18Z" fill="#ff6b00"/>
+                            <path d="M12 9C8.68629 9 6 11.6863 6 15H8C8 12.7909 9.79086 11 12 11C14.2091 11 16 12.7909 16 15H18C18 11.6863 15.3137 9 12 9Z" fill="#ff6b00"/>
+                            <path d="M12 6C7.02944 6 3 10.0294 3 15H5C5 11.134 8.13401 8 12 8C15.866 8 19 11.134 19 15H21C21 10.0294 16.9706 6 12 6Z" fill="#ff6b00"/>
+                            <path d="M12 3C5.37258 3 0 8.37258 0 15H2C2 9.47715 6.47715 5 12 5C17.5228 5 22 9.47715 22 15H24C24 8.37258 18.6274 3 12 3Z" fill="#ff6b00"/>
+                        </svg>
+                    </div>
+                    <h3 class="plan-name">Combo Plus</h3>
+                    <div class="plan-speed">600MB + 20GB</div>
+                    <div class="plan-price">R$ 99,90<span>/mês</span></div>
+                    <ul class="plan-features">
+                        <li>Internet Fibra 600MB</li>
+                        <li>20GB no celular</li>
+                        <li>Ligações ilimitadas</li>
+                        <li>Apps ilimitados</li>
+                        <li>Instalação grátis</li>
+                    </ul>
+                    <a href="https://brisanet.igorbrisanet.shop/webhook/contratar" target="_blank" class="cta-button">Assinar Agora</a>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 3L4 14H12L11 21L20 10H12L13 3Z" fill="#ff6b00" stroke="#ff8533" stroke-width="1.5" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="plan-name">Combo Premium</h3>
+                    <div class="plan-speed">700MB + 20GB</div>
+                    <div class="plan-price">R$ 109,90<span>/mês</span></div>
+                    <ul class="plan-features">
+                        <li>Internet Fibra 700MB</li>
+                        <li>20GB no celular</li>
+                        <li>Ligações ilimitadas</li>
+                        <li>Apps ilimitados</li>
+                        <li>Instalação grátis</li>
+                    </ul>
+                    <a href="https://brisanet.igorbrisanet.shop/webhook/contratar" target="_blank" class="cta-button">Assinar Agora</a>
+                </div>
+            </div>
+            <button class="carousel-button next" onclick="moveCarousel('combo', 1)">›</button>
+        </div>
+    </section>
+
+    <section class="plans-section" style="background: rgba(0, 0, 0, 0.3);">
+        <h2 class="section-title">BrisaChip - Planos Móveis</h2>
+        <p style="text-align: center; color: #ccc; margin-bottom: 40px; font-size: 18px;">Liberdade para se conectar onde estiver!</p>
+        <div class="carousel-container">
+            <!-- Ícones flutuantes à esquerda -->
+            <div class="floating-icons left">
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="2" width="14" height="20" rx="2" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                        <line x1="5" y1="18" x2="19" y2="18" stroke="#ff6b00" stroke-width="2"/>
+                        <circle cx="12" cy="20" r="0.5" fill="#ff6b00"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 18C10.3431 18 9 16.6569 9 15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15C15 16.6569 13.6569 18 12 18Z"/>
+                        <path d="M12 9C8.68629 9 6 11.6863 6 15H8C8 12.7909 9.79086 11 12 11C14.2091 11 16 12.7909 16 15H18C18 11.6863 15.3137 9 12 9Z"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ff6b00"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="2" width="14" height="20" rx="2" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                        <line x1="5" y1="18" x2="19" y2="18" stroke="#ff6b00" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Ícones flutuantes à direita -->
+            <div class="floating-icons right">
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ff6b00"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="2" width="14" height="20" rx="2" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                        <line x1="5" y1="18" x2="19" y2="18" stroke="#ff6b00" stroke-width="2"/>
+                        <circle cx="12" cy="20" r="0.5" fill="#ff6b00"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 18C10.3431 18 9 16.6569 9 15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15C15 16.6569 13.6569 18 12 18Z"/>
+                        <path d="M12 9C8.68629 9 6 11.6863 6 15H8C8 12.7909 9.79086 11 12 11C14.2091 11 16 12.7909 16 15H18C18 11.6863 15.3137 9 12 9Z"/>
+                    </svg>
+                </div>
+                <div class="floating-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                        <circle cx="12" cy="12" r="3" fill="#ff6b00"/>
+                    </svg>
+                </div>
+            </div>
+
+            <button class="carousel-button prev" onclick="moveCarousel('movel', -1)">‹</button>
+            <div class="carousel" id="carousel-movel">
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="2" width="14" height="20" rx="2" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                            <line x1="5" y1="18" x2="19" y2="18" stroke="#ff6b00" stroke-width="2"/>
+                            <circle cx="12" cy="20" r="0.5" fill="#ff6b00" stroke="#ff6b00" stroke-width="1.5"/>
+                            <path d="M9 6H15M9 9H15M9 12H13" stroke="#ff6b00" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="plan-name">BrisaChip Start</h3>
+                    <div class="plan-speed">20GB</div>
+                    <div class="plan-price">R$ 29,99<span>/mês</span></div>
+                    <ul class="plan-features">
+                        <li>20GB de internet</li>
+                        <li>Ligações ilimitadas</li>
+                        <li>Waze ilimitado</li>
+                        <li>Facebook ilimitado</li>
+                        <li>WhatsApp ilimitado</li>
+                        <li>Cobertura nacional</li>
+                    </ul>
+                    <a href="https://brisanet.igorbrisanet.shop/webhook/contratar" target="_blank" class="cta-button">Assinar Agora</a>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="2" width="14" height="20" rx="2" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                            <line x1="5" y1="18" x2="19" y2="18" stroke="#ff6b00" stroke-width="2"/>
+                            <circle cx="12" cy="20" r="0.5" fill="#ff6b00" stroke="#ff6b00" stroke-width="1.5"/>
+                            <path d="M8 7L12 11L16 7M8 10L12 14L16 10" stroke="#ff6b00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="plan-name">BrisaChip Plus</h3>
+                    <div class="plan-speed">30GB</div>
+                    <div class="plan-price">R$ 39,99<span>/mês</span></div>
+                    <ul class="plan-features">
+                        <li>30GB de internet</li>
+                        <li>Ligações ilimitadas</li>
+                        <li>Waze ilimitado</li>
+                        <li>Facebook ilimitado</li>
+                        <li>WhatsApp ilimitado</li>
+                        <li>Cobertura nacional</li>
+                    </ul>
+                    <a href="https://brisanet.igorbrisanet.shop/webhook/contratar" target="_blank" class="cta-button">Assinar Agora</a>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="2" width="14" height="20" rx="2" stroke="#ff6b00" stroke-width="2" fill="#ff6b00" fill-opacity="0.2"/>
+                            <line x1="5" y1="18" x2="19" y2="18" stroke="#ff6b00" stroke-width="2"/>
+                            <circle cx="12" cy="20" r="0.5" fill="#ff6b00" stroke="#ff6b00" stroke-width="1.5"/>
+                            <path d="M9 7H15M9 10H15M9 13H15" stroke="#ff6b00" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="plan-name">BrisaChip Ultra</h3>
+                    <div class="plan-speed">100GB</div>
+                    <div class="plan-price">R$ 49,99<span>/mês</span></div>
+                    <ul class="plan-features">
+                        <li>100GB de internet</li>
+                        <li>Ligações ilimitadas</li>
+                        <li>Waze ilimitado</li>
+                        <li>Facebook ilimitado</li>
+                        <li>WhatsApp ilimitado</li>
+                        <li>Cobertura nacional</li>
+                    </ul>
+                    <a href="https://brisanet.igorbrisanet.shop/webhook/contratar" target="_blank" class="cta-button">Assinar Agora</a>
+                </div>
+            </div>
+            <button class="carousel-button next" onclick="moveCarousel('movel', 1)">›</button>
+        </div>
+    </section>
+
+    <section class="features" id="beneficios">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                    <circle cx="12" cy="12" r="3" fill="#ff6b00"/>
+                    <path d="M12 9V6M12 18V15M9 12H6M18 12H15" stroke="#ff6b00" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h3>Cobertura Nordeste</h3>
+            <p>Presença em toda região Nordeste com infraestrutura de ponta</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ff6b00" stroke="#ff8533" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3>Velocidade Turbo</h3>
+            <p>Internet ultra-rápida com tecnologia de fibra óptica</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="#ff6b00" stroke-width="2" fill="none"/>
+                    <path d="M9 22V12H15V22" stroke="#ff6b00" stroke-width="2"/>
+                    <circle cx="12" cy="8" r="1.5" fill="#ff6b00"/>
+                    <path d="M7 15H10M14 15H17" stroke="#ff6b00" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h3>Instalação Grátis</h3>
+            <p>Instalação sem custo e técnicos especializados</p>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <p>&copy; 2025 brisanet | Todos os direitos reservados</p>
+        <p>📞 10517 | 📧 igor.borges@grupobrisanet.com.br</p>
+    </footer>
+
+    <script>
+        // ========== CONFIGURAÇÃO N8N WEBHOOK ==========
+        const N8N_WEBHOOK_URL = 'https://n8n-n8n.rthuab.easypanel.host/webhook/dd3204aa-bd9a-471f-b250-278f6c66ce01/chat';
+        let sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        
+        // ========== DADOS DE LOCALIZAÇÃO ==========
+        const cidadesPorEstado = {
+            "CE": ["Pereiro", "Jaguaribe", "Limoeiro do Norte", "Tabuleiro do Norte", "Acopiara", "Horizonte", "Itapipoca", "Iracema", "Juazeiro do Norte", "Barbalha", "Crato", "Icó", "Paraipaba", "Iguatu", "Pedra Branca", "Jaguaretama", "Quixeramobim", "Morada Nova", "Russas", "Banabuiu", "QuixadÃ", "Senador Pompeu", "Mombaça", "Ipu", "Caucaia", "Maracanaú", "Maranguape", "Aquiraz", "Ubajara", "Brejo Santo", "Cascavel", "Cedro", "Crateús", "Guaraciaba do Norte", "Jaguaribara", "Itapajé", "Milagres", "São Benedito", "Tianguá", "Monte Grave", "Ibiapina", "Pacajus", "Fortaleza", "Canindé", "Acaraú", "Lavras da Mangabeira", "Orós", "Quixeré", "Sobral", "Várzea Alegre", "Tauá", "Missão Velha", "Eusébio"],
+            "RN": ["São Miguel", "Coronel João Pessoa", "Pau dos Ferros", "Doutor Severiano", "Encanto", "Rafael Fernandes", "Nísia Floresta", "Major Sales", "Francisco Dantas", "Mossoró", "Umarizal", "Baraúna", "Martins", "Ceará Mirim", "Extremoz", "Macaíba", "Natal", "Parnamirim", "São Gonçalo do Amarante", "Portalegre", "Caicó", "São José de Mipibu"],
+            "PB": ["Uiraúna", "Campina Grande", "Bayeux", "Santa Rita", "Queimadas", "Patos", "Catolé do Rocha", "Cajazeiras", "João Pessoa", "Sousa", "Pombal", "Santa Luzia", "Bananeiras"],
+            "PE": ["Salgueiro", "Bezerros", "Caruaru", "Jatobá", "Santa Luzia", "Custódia", "Chã Grande", "Camutanga", "Ferreiros", "Gravatá", "Moreno", "Pesqueira", "Piedade", "Serra Talhada"],
+            "AL": ["Olho D'agua das Flores", "Piranhas", "Delmiro Gouveia"],
+            "SE": ["Frei Paulo", "Canindé de São Francisco"],
+            "BA": ["Serra Preta", "Paulo Afonso"],
+            "MA": ["Timon", "Conceição"],
+            "PI": ["Parnaíba"]
+        };
+
+        const estadosNomes = {
+            "CE": "Ceará",
+            "RN": "Rio Grande do Norte",
+            "PB": "Paraíba",
+            "PE": "Pernambuco",
+            "AL": "Alagoas",
+            "SE": "Sergipe",
+            "BA": "Bahia",
+            "MA": "Maranhão",
+            "PI": "Piauí"
+        };
+
+        const carouselStates = {
+            combo: { index: 0 },
+            movel: { index: 0 },
+            consultant: { index: 0 }
+        };
+
+        // ========== FUNÇÕES DO CHAT ==========
+        
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            const chatButton = document.getElementById('chatButton');
+            const body = document.body;
+            
+            chatWindow.classList.toggle('open');
+            chatButton.classList.toggle('active');
+            
+            if (chatWindow.classList.contains('open')) {
+                body.classList.add('no-scroll');
+                document.getElementById('chatInput').focus();
+            } else {
+                body.classList.remove('no-scroll');
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addUserMessage(message);
+                input.value = '';
+                
+                showTypingIndicator();
+                sendToN8N(message);
+            }
+        }
+
+        function addUserMessage(message) {
+            const chatBody = document.getElementById('chatBody');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message user';
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <div class="message-content">${escapeHtml(message)}</div>
+            `;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function addBotMessage(message) {
+            const chatBody = document.getElementById('chatBody');
+            
+            const typingIndicator = chatBody.querySelector('.typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.parentElement.remove();
+            }
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message bot';
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    <img src="https://i.ibb.co/zTr83NPg/Gemini-Generated-Image-3wz7dq3wz7dq3wz7.png" alt="Igor Borges">
+                </div>
+                <div class="message-content">${message}</div>
+            `;
+            chatBody.appendChild(messageDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const chatBody = document.getElementById('chatBody');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message bot';
+            typingDiv.innerHTML = `
+                <div class="message-avatar">
+                    <img src="https://i.ibb.co/zTr83NPg/Gemini-Generated-Image-3wz7dq3wz7dq3wz7.png" alt="Igor Borges">
+                </div>
+                <div class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            chatBody.appendChild(typingDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function sendQuickAction(action) {
+            addUserMessage(action);
+            showTypingIndicator();
+            sendToN8N(action);
+        }
+
+        async function sendToN8N(userMessage) {
+            try {
+                const response = await fetch(N8N_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'sendMessage',
+                        sessionId: sessionId,
+                        chatInput: userMessage
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const botResponse = data.output || data.response || data.message || 'Desculpe, não consegui processar sua mensagem.';
+                    addBotMessage(botResponse);
+                } else {
+                    throw new Error('Erro na resposta do servidor');
+                }
+            } catch (error) {
+                console.error('Erro ao enviar mensagem:', error);
+                addBotMessage('Desculpe, estou com dificuldades para responder no momento. Por favor, tente novamente em alguns instantes. 🔧');
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // ========== FUNÇÕES DA PÁGINA ==========
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const stateSelect = document.getElementById('stateSelect');
+            const citySelect = document.getElementById('citySelect');
+            const confirmButton = document.getElementById('confirmButton');
+            const locationPopup = document.getElementById('locationPopup');
+            const selectedLocation = document.getElementById('selectedLocation');
+            const locationText = document.getElementById('locationText');
+
+            // Preencher estados
+            Object.keys(estadosNomes).sort((a, b) => estadosNomes[a].localeCompare(estadosNomes[b])).forEach(sigla => {
+                const option = document.createElement('option');
+                option.value = sigla;
+                option.textContent = estadosNomes[sigla];
+                stateSelect.appendChild(option);
+            });
+
+            // Quando seleciona estado
+            stateSelect.addEventListener('change', function() {
+                const siglaEstado = this.value;
+                
+                citySelect.innerHTML = '<option value="">Selecione sua cidade</option>';
+                citySelect.disabled = true;
+                confirmButton.disabled = true;
+
+                if (siglaEstado && cidadesPorEstado[siglaEstado]) {
+                    cidadesPorEstado[siglaEstado].sort().forEach(cidade => {
+                        const option = document.createElement('option');
+                        option.value = cidade;
+                        option.textContent = cidade;
+                        citySelect.appendChild(option);
+                    });
+                    citySelect.disabled = false;
+                }
+            });
+
+            // Quando seleciona cidade
+            citySelect.addEventListener('change', function() {
+                if (this.value && stateSelect.value) {
+                    confirmButton.disabled = false;
+                } else {
+                    confirmButton.disabled = true;
+                }
+            });
+
+            // Botão X para fechar popup
+            const popupCloseBtn = document.getElementById('popupCloseBtn');
+            popupCloseBtn.onclick = function() {
+                locationPopup.style.display = 'none';
+                locationPopup.classList.add('hidden');
+                document.body.classList.remove('no-scroll');
+                document.body.style.top = '';
+            };
+
+            // Quando clica em confirmar
+            confirmButton.onclick = function(e) {
+                const siglaEstado = stateSelect.value;
+                const cidade = citySelect.value;
+                
+                if (!siglaEstado || !cidade) {
+                    alert('Selecione estado e cidade');
+                    return false;
+                }
+                
+                const nomeEstado = estadosNomes[siglaEstado];
+                
+                // Atualiza badge
+                locationText.textContent = `📍 ${cidade} - ${nomeEstado}`;
+                selectedLocation.classList.add('show');
+                
+                // Fecha popup
+                const popup = document.getElementById('locationPopup');
+                if (popup) {
+                    popup.style.display = 'none';
+                    popup.classList.add('hidden');
+                    document.body.classList.remove('no-scroll');
+                    document.body.style.top = '';
+                }
+                
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            };
+
+            // Reabrir popup ao clicar no badge
+            selectedLocation.onclick = function() {
+                const scrollY = window.scrollY;
+                document.body.style.top = `-${scrollY}px`;
+                locationPopup.style.display = 'flex';
+                locationPopup.classList.remove('hidden');
+                document.body.classList.add('no-scroll');
+            };
+
+            // Mostrar popup após 500ms
+            setTimeout(() => {
+                const scrollY = window.scrollY;
+                document.body.style.top = `-${scrollY}px`;
+                locationPopup.style.display = 'flex';
+                locationPopup.classList.remove('hidden');
+                document.body.classList.add('no-scroll');
+            }, 500);
+
+            // Inicializar carrossel de consultores
+            initConsultantCarousel();
+        });
+
+        // ========== CARROSSEL DE CONSULTORES ==========
+
+        function initConsultantCarousel() {
+            const slides = document.querySelectorAll('.consultant-slide');
+            const navContainer = document.getElementById('consultantNav');
+            const slidesContainer = document.getElementById('consultantSlides');
+            
+            // Garante que começa na primeira posição
+            carouselStates.consultant.index = 0;
+            slidesContainer.style.transform = 'translateX(0)';
+            
+            slides.forEach((slide, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'consultant-dot';
+                if (index === 0) dot.classList.add('active');
+                dot.onclick = () => goToConsultantSlide(index);
+                navContainer.appendChild(dot);
+            });
+        }
+
+        function moveConsultantCarousel(direction) {
+            const slides = document.querySelectorAll('.consultant-slide');
+            const slidesContainer = document.getElementById('consultantSlides');
+            const dots = document.querySelectorAll('.consultant-dot');
+            
+            carouselStates.consultant.index += direction;
+            
+            // Loop infinito
+            if (carouselStates.consultant.index < 0) {
+                carouselStates.consultant.index = slides.length - 1;
+            }
+            if (carouselStates.consultant.index >= slides.length) {
+                carouselStates.consultant.index = 0;
+            }
+            
+            slidesContainer.style.transform = `translateX(-${carouselStates.consultant.index * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === carouselStates.consultant.index);
+            });
+        }
+
+        function goToConsultantSlide(index) {
+            const slidesContainer = document.getElementById('consultantSlides');
+            const dots = document.querySelectorAll('.consultant-dot');
+            
+            carouselStates.consultant.index = index;
+            slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        // ========== CARROSSEL DE PLANOS ==========
+
+        function moveCarousel(type, direction) {
+            const carousel = document.getElementById('carousel-' + type);
+            const cards = carousel.querySelectorAll('.plan-card');
+            
+            let cardWidth;
+            if (window.innerWidth <= 480) {
+                cardWidth = 290;
+            } else if (window.innerWidth <= 768) {
+                cardWidth = 310;
+            } else {
+                cardWidth = 380;
+            }
+            
+            carouselStates[type].index += direction;
+            
+            if (carouselStates[type].index < 0) carouselStates[type].index = 0;
+            if (carouselStates[type].index > cards.length - 1) carouselStates[type].index = cards.length - 1;
+            
+            carousel.style.transform = `translateX(-${carouselStates[type].index * cardWidth}px)`;
+        }
+
+        // Ajustar carrossel ao redimensionar
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                carouselStates.combo.index = 0;
+                carouselStates.movel.index = 0;
+                document.getElementById('carousel-combo').style.transform = 'translateX(0)';
+                document.getElementById('carousel-movel').style.transform = 'translateX(0)';
+            }, 250);
+        });
+    </script>
+</body>
+</html>
