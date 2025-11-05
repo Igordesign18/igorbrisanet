@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>brisanet | Internet Residencial e Planos Móveis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         html {
             scroll-behavior: smooth;
@@ -2007,33 +2010,513 @@
         </nav>
     </header>
 
-    <section class="hero" id="home">
-        <div class="consultant-carousel">
-            <button class="consultant-arrow prev" onclick="moveConsultantCarousel(-1)">‹</button>
-            <div class="consultant-slides" id="consultantSlides">
-                <div class="consultant-slide">
-                    <div class="consultant-badge">
-                        <div class="consultant-image-container">
-                            <img src="https://i.ibb.co/zTr83NPg/Gemini-Generated-Image-3wz7dq3wz7dq3wz7.png" alt="Igor Borges" class="consultant-image">
-                        </div>
-                        <div class="consultant-info">
-                            <h3 class="consultant-name">Igor Borges</h3>
-                            <p class="consultant-label">Consultor Brisanet</p>
-                        </div>
+    <!-- ========== MEGA BLACK BRISANET BANNER ========== -->
+    <style>
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .mega-black-banner {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #ff6b00 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 4px solid #ff6b00;
+            box-shadow: 0 10px 40px rgba(255, 107, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .mega-black-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 107, 0, 0.2) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .promo-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 107, 0, 0.15);
+            padding: 12px 35px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            border: 2px solid #ff6b00;
+            backdrop-filter: blur(10px);
+        }
+
+        .promo-tag svg {
+            width: 24px;
+            height: 24px;
+            fill: #ff6b00;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .promo-tag span {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ff6b00;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .main-title-container {
+            margin: 30px 0;
+        }
+
+        .main-title {
+            font-size: 105px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            font-family: 'Oswald', 'Impact', 'Arial Black', sans-serif;
+            line-height: 1.2;
+        }
+
+        .main-title .mega-black {
+            color: #000;
+            -webkit-text-stroke: 4px #ff6b00;
+            text-stroke: 4px #ff6b00;
+            text-shadow: 0 0 30px rgba(255, 107, 0, 0.8), 0 5px 15px rgba(0, 0, 0, 0.5);
+            display: block;
+        }
+
+        .main-title .brisanet {
+            color: #ff6b00;
+            text-shadow: 0 0 50px rgba(255, 107, 0, 1), 0 0 100px rgba(255, 107, 0, 0.6);
+            display: block;
+            font-size: 115px;
+        }
+
+        .banner-subtitle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 26px;
+            color: #fff;
+            margin-top: 25px;
+            font-weight: 600;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+            letter-spacing: 1px;
+        }
+
+        .banner-subtitle svg {
+            width: 32px;
+            height: 32px;
+            fill: #ff6b00;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .banner-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 35px;
+            padding: 20px 60px;
+            background: #ff6b00;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 0 10px 35px rgba(255, 107, 0, 0.5), 0 0 30px rgba(255, 107, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 3px solid #ff6b00;
+            cursor: pointer;
+        }
+
+        .banner-cta svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .banner-cta:hover {
+            background: #fff;
+            color: #ff6b00;
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 15px 45px rgba(255, 107, 0, 0.6), 0 0 40px rgba(255, 107, 0, 0.4);
+        }
+
+        .banner-cta:hover svg {
+            fill: #ff6b00;
+        }
+
+        /* ========== CONTADOR REGRESSIVO ========== */
+        .countdown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 35px auto 25px;
+            max-width: 600px;
+        }
+
+        .countdown-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .countdown-header-icon {
+            width: 28px;
+            height: 28px;
+            fill: #ff6b00;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.8));
+        }
+
+        .countdown-label {
+            font-size: 16px;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            padding: 20px 35px;
+            border: 3px solid #ff6b00;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 25px rgba(255, 107, 0, 0.4);
+        }
+
+        .countdown-icon {
+            width: 45px;
+            height: 45px;
+            fill: #ff6b00;
+            animation: pulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.8));
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(255, 107, 0, 0.3), inset 0 0 20px rgba(255, 107, 0, 0.1);
+            min-width: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-unit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                left: -100%;
+            }
+            50% {
+                left: 100%;
+            }
+        }
+
+        .countdown-number {
+            font-size: 42px;
+            font-weight: 900;
+            color: #ff6b00;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.8), 0 0 40px rgba(255, 107, 0, 0.4);
+            line-height: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-text {
+            font-size: 12px;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-separator {
+            font-size: 36px;
+            color: #ff6b00;
+            font-weight: 900;
+            text-shadow: 0 0 10px rgba(255, 107, 0, 0.8);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49%, 100% {
+                opacity: 1;
+            }
+            50%, 99% {
+                opacity: 0.3;
+            }
+        }
+
+        /* ========== ANIMAÇÕES DE SCROLL ========== */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-animate.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-animate-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-animate-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-animate-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-animate-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-animate-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-animate-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Delays para efeito cascata */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+        .delay-6 { transition-delay: 0.6s; }
+
+        @media (max-width: 768px) {
+            .mega-black-banner {
+                padding: 40px 15px;
+                margin-top: 70px;
+            }
+
+            .countdown-container {
+                gap: 12px;
+            }
+
+            .countdown-header {
+                gap: 8px;
+            }
+
+            .countdown-header-icon {
+                width: 22px;
+                height: 22px;
+            }
+
+            .countdown-label {
+                font-size: 14px;
+            }
+
+            .countdown-timer {
+                gap: 10px;
+                padding: 15px 25px;
+            }
+
+            .countdown-icon {
+                width: 35px;
+                height: 35px;
+            }
+
+            .countdown-unit {
+                padding: 10px 12px;
+                min-width: 60px;
+            }
+
+            .countdown-number {
+                font-size: 32px;
+            }
+
+            .countdown-text {
+                font-size: 10px;
+            }
+
+            .countdown-separator {
+                font-size: 28px;
+            }
+
+            .main-title {
+                font-size: 60px;
+                letter-spacing: 10px;
+            }
+
+            .main-title .brisanet {
+                font-size: 70px;
+            }
+
+            .main-title .mega-black {
+                -webkit-text-stroke: 3px #ff6b00;
+                text-stroke: 3px #ff6b00;
+            }
+
+            .promo-tag {
+                padding: 10px 25px;
+            }
+
+            .promo-tag span {
+                font-size: 12px;
+                letter-spacing: 2px;
+            }
+
+            .promo-tag svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .banner-subtitle {
+                font-size: 18px;
+                gap: 10px;
+            }
+
+            .banner-subtitle svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .banner-cta {
+                padding: 16px 40px;
+                font-size: 16px;
+                letter-spacing: 2px;
+                gap: 8px;
+            }
+
+            .banner-cta svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    </style>
+
+    <section class="mega-black-banner">
+        <div class="banner-content">
+            <div class="promo-tag">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>
+                </svg>
+                <span>PROMOÇÃO ESPECIAL</span>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>
+                </svg>
+            </div>
+
+            <div class="main-title-container">
+                <h1 class="main-title">
+                    <span class="mega-black">MEGA BLACK</span>
+                    <span class="brisanet">BRISANET</span>
+                </h1>
+            </div>
+
+            <!-- Contador Regressivo -->
+            <div class="countdown-container">
+                <div class="countdown-header">
+                    <svg class="countdown-header-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+                    </svg>
+                    <div class="countdown-label">OFERTA EXPIRA EM</div>
+                    <svg class="countdown-header-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+                    </svg>
+                </div>
+                <div class="countdown-timer">
+                    <svg class="countdown-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+                    </svg>
+                    <div class="countdown-unit">
+                        <div class="countdown-number" id="minutes">10</div>
+                        <div class="countdown-text">Min</div>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-unit">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-text">Seg</div>
                     </div>
                 </div>
-                <div class="consultant-slide image-only">
-                    <img src="https://i.ibb.co/67Kv6JhJ/Whats-App-Image-2025-10-07-at-19-22-20.jpg" alt="Banner 2">
-                </div>
-                <div class="consultant-slide image-only">
-                    <img src="https://i.ibb.co/1tn45JVz/Whats-App-Image-2025-10-07-at-19-22-21-1.jpg" alt="Banner 3">
-                </div>
-                <div class="consultant-slide image-only">
-                    <img src="https://i.ibb.co/rG0TdGk1/Whats-App-Image-2025-10-07-at-19-22-21.jpg" alt="Banner 4">
-                </div>
             </div>
-            <button class="consultant-arrow next" onclick="moveConsultantCarousel(1)">›</button>
-            <div class="consultant-nav" id="consultantNav"></div>
+
+            <div class="banner-subtitle">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+                </svg>
+                <span>Ofertas imperdíveis que você não pode deixar passar!</span>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+                </svg>
+            </div>
+
+            <a href="#planos" class="banner-cta">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+                VER OFERTAS AGORA
+            </a>
+        </div>
+    </section>
+
+    <section class="hero" id="home">
+        <div class="consultant-badge" style="margin: 0 auto 30px;">
+            <div class="consultant-image-container">
+                <img src="https://i.ibb.co/zTr83NPg/Gemini-Generated-Image-3wz7dq3wz7dq3wz7.png" alt="Igor Borges" class="consultant-image">
+            </div>
+            <div class="consultant-info">
+                <h3 class="consultant-name">Igor Borges</h3>
+                <p class="consultant-label">Consultor Brisanet</p>
+            </div>
         </div>
         <h1>Conectividade Sem Limites</h1>
         <p>Internet ultra-rápida para sua casa e planos móveis com 5G</p>
@@ -2042,7 +2525,7 @@
         </button>
     </section>
 
-    <section class="plans-section" id="planos">
+    <section class="plans-section scroll-animate" id="planos">
         <h2 class="section-title">Internet Fibra + BrisaChip</h2>
         <p style="text-align: center; color: #ccc; margin-bottom: 40px; font-size: 18px;">Combine internet ultra-rápida com seu plano móvel!</p>
         <div class="carousel-container">
@@ -2106,7 +2589,7 @@
 
             <button class="carousel-button prev" onclick="moveCarousel('combo', -1)">‹</button>
             <div class="carousel" id="carousel-combo">
-                <div class="plan-card">
+                <div class="plan-card scroll-animate-scale delay-1">
                     <div class="plan-icon">
                         <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 18C10.3431 18 9 16.6569 9 15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15C15 16.6569 13.6569 18 12 18Z" fill="#ff6b00"/>
@@ -2307,8 +2790,8 @@
         </div>
     </section>
 
-    <section class="features" id="beneficios">
-        <div class="feature-card">
+    <section class="features scroll-animate" id="beneficios">
+        <div class="feature-card scroll-animate-scale delay-1">
             <div class="feature-icon">
                 <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="#ff6b00" stroke-width="2" fill="none"/>
@@ -2319,7 +2802,7 @@
             <h3>Cobertura Nordeste</h3>
             <p>Presença em toda região Nordeste com infraestrutura de ponta</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card scroll-animate-scale delay-2">
             <div class="feature-icon">
                 <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ff6b00" stroke="#ff8533" stroke-width="1.5" stroke-linejoin="round"/>
@@ -2328,7 +2811,7 @@
             <h3>Velocidade Turbo</h3>
             <p>Internet ultra-rápida com tecnologia de fibra óptica</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card scroll-animate-scale delay-3">
             <div class="feature-icon">
                 <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="#ff6b00" stroke-width="2" fill="none"/>
@@ -2348,6 +2831,57 @@
     </footer>
 
     <script>
+        // ========== CONTADOR REGRESSIVO ==========
+        let countdownTime = 10 * 60; // 10 minutos em segundos
+
+        function updateCountdown() {
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+            
+            const minutes = Math.floor(countdownTime / 60);
+            const seconds = countdownTime % 60;
+            
+            minutesElement.textContent = String(minutes).padStart(2, '0');
+            secondsElement.textContent = String(seconds).padStart(2, '0');
+            
+            if (countdownTime > 0) {
+                countdownTime--;
+            } else {
+                // Quando o tempo acabar, pode adicionar uma ação
+                clearInterval(countdownInterval);
+                // Opcional: resetar o contador
+                // countdownTime = 10 * 60;
+            }
+        }
+
+        // Iniciar o contador quando a página carregar
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Chamar imediatamente para não esperar 1 segundo
+
+        // ========== ANIMAÇÕES DE SCROLL ==========
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            // Observar todos os elementos com classes de animação
+            document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Iniciar animações quando o DOM carregar
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+
         // ========== CONFIGURAÇÃO N8N WEBHOOK ==========
         const N8N_WEBHOOK_URL = 'https://n8n-n8n.rthuab.easypanel.host/webhook/dd3204aa-bd9a-471f-b250-278f6c66ce01/chat';
         let sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
@@ -2615,64 +3149,7 @@
                 locationPopup.classList.remove('hidden');
                 document.body.classList.add('no-scroll');
             }, 500);
-
-            // Inicializar carrossel de consultores
-            initConsultantCarousel();
         });
-
-        // ========== CARROSSEL DE CONSULTORES ==========
-
-        function initConsultantCarousel() {
-            const slides = document.querySelectorAll('.consultant-slide');
-            const navContainer = document.getElementById('consultantNav');
-            const slidesContainer = document.getElementById('consultantSlides');
-            
-            // Garante que começa na primeira posição
-            carouselStates.consultant.index = 0;
-            slidesContainer.style.transform = 'translateX(0)';
-            
-            slides.forEach((slide, index) => {
-                const dot = document.createElement('div');
-                dot.className = 'consultant-dot';
-                if (index === 0) dot.classList.add('active');
-                dot.onclick = () => goToConsultantSlide(index);
-                navContainer.appendChild(dot);
-            });
-        }
-
-        function moveConsultantCarousel(direction) {
-            const slides = document.querySelectorAll('.consultant-slide');
-            const slidesContainer = document.getElementById('consultantSlides');
-            const dots = document.querySelectorAll('.consultant-dot');
-            
-            carouselStates.consultant.index += direction;
-            
-            // Loop infinito
-            if (carouselStates.consultant.index < 0) {
-                carouselStates.consultant.index = slides.length - 1;
-            }
-            if (carouselStates.consultant.index >= slides.length) {
-                carouselStates.consultant.index = 0;
-            }
-            
-            slidesContainer.style.transform = `translateX(-${carouselStates.consultant.index * 100}%)`;
-            
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === carouselStates.consultant.index);
-            });
-        }
-
-        function goToConsultantSlide(index) {
-            const slidesContainer = document.getElementById('consultantSlides');
-            const dots = document.querySelectorAll('.consultant-dot');
-            
-            carouselStates.consultant.index = index;
-            slidesContainer.style.transform = `translateX(-${index * 100}%)`;
-            
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
 
         // ========== CARROSSEL DE PLANOS ==========
 
